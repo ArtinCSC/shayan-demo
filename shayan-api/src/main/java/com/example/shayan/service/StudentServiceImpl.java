@@ -6,6 +6,8 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentServiceImpl implements StudentService {
 
@@ -18,6 +20,11 @@ public class StudentServiceImpl implements StudentService {
             throw new NotFoundException("Student not found!");
         }
         return student;
+    }
+
+    @Override
+    public List<Student> getStudents() {
+        return repo.findAll();
     }
 
     public Student create(Student student) {

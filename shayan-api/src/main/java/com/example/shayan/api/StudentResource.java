@@ -6,6 +6,8 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentResource {
@@ -16,6 +18,11 @@ public class StudentResource {
     @GetMapping("/{id}")
     public Student get(@PathVariable("id") Long id) throws NotFoundException {
         return service.get(id);
+    }
+
+    @GetMapping
+    public List<Student> getAll() {
+        return service.getStudents();
     }
 
     @PostMapping
