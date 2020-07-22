@@ -1,7 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DOCUMENT} from '@angular/common';
-import {DomSanitizer} from '@angular/platform-browser';
 import {environment} from 'src/environments/environment.local';
 import {Observable} from 'rxjs';
 
@@ -13,8 +12,7 @@ export class StudentService {
   public apiBase: string = environment.api;
 
   constructor(public httpClient: HttpClient,
-              @Inject(DOCUMENT) private document: Document,
-              private domSanitizer: DomSanitizer) {
+              @Inject(DOCUMENT) private document: Document) {
   }
 
   public post(path: string, payload?: any, options?: any): Observable<any> {
